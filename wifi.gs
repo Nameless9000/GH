@@ -24,6 +24,7 @@ laa = 999999
 networks = c.wifi_networks(interface)
 bssid = ""
 essid = ""
+tack = ""
 xx = false
 for net in networks
 	ack = ceil(300000/net.split(" ")[1].remove("%").val)
@@ -51,11 +52,15 @@ for net in networks
 	end if
 	if essid == net.split(" ")[2] then
 		print(net+" ["+ack+"] (SELECTED)")
+		tack = ack
 	else
 		print(net+" ["+ack+"]")
 	end if
+	if ack != tack then
+		ack = tack
+	end if
 end for
-f = c.File(current_path+"/file.cap")
+f = c.File(c.current_path+"/file.cap")
 if f then f.delete
 
 crypto.airmon("start", interface)
@@ -63,7 +68,7 @@ crypto.airmon("start", interface)
 r1 = crypto.aireplay(bssid,essid,ack)
 if typeof(r1) == "string" then exit(r1)
 
-pass = crypto.aircrack(current_path+"/file.cap")
+pass = crypto.aircrack(c.current_path+"/file.cap")
 if pass == "" then exit("Terminated!")
 c.connect_wifi(interface,bssid,essid,pass)
 exit("Connected, Creds: "+essid+":"+pass)
