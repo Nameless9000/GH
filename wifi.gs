@@ -1,6 +1,7 @@
 // Program: wifi
 // Usage: wifi <(opt) essid>
 // Function: hack into the best wifi or hacks into specific wifi
+// NIGHTLY
 
 w = ""
 if params.len >= 1 then 
