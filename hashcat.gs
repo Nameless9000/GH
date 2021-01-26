@@ -51,7 +51,7 @@ u=getParam("-u")
 Ret = "Cracking Successful!"
 
 if h then
-    if h.split(":") then
+    if h.split(":").len == 2 then
         u = h.split(":")[0]
         h = h.split(":")[1]
         p = crypto.decipher(h)
