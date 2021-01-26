@@ -1,7 +1,7 @@
 //command: hashcat
 loadLibrary = function(libFileName, search)
 	paths = [""]
-	if search then paths = [get_shell.host_computer.current_path, "/lib", "/bin", "/usr/bin"]
+	if search then paths = [current_path, "/lib", "/bin", "/usr/bin"]
 	for p in paths
 		lib = include_lib(p+"/"+libFileName)
 		if lib then return lib
