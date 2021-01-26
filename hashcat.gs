@@ -54,7 +54,7 @@ if h then
     if h.split(":") then
         u = h.split(":")[0]
         h = h.split(":")[1]
-        p = crypto.decipher(u,h)
+        p = crypto.decipher(h)
         Ret=Ret+"\nResult: "u+"@"+p
     else
         p = crypto.decipher(h)
@@ -75,7 +75,7 @@ if f then
         if u then
             if l.lower.split(u.lower) then
                 h = l.split(":")[1]
-                p = crypto.decipher(u,h)
+                p = crypto.decipher(h)
                 Ret=Ret+"\nResult: "u+"@"+p
             end if
         else
