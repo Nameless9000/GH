@@ -10,7 +10,7 @@ end if
 
 crypto = include_lib("/lib/crypto.so")
 if not crypto then
-	crypto = include_lib(get_shell.host_computer.current_path+"/crypto.so")
+	crypto = include_lib(current_path+"/crypto.so")
 	if not crypto then exit("Crypto.so not found!")
 end if
 
